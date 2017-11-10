@@ -9,7 +9,7 @@ object sample extends App {
   // dbname: infosys
   // tablename: test
   val df = spark.read.format("jdbc").options(
-    Map("url" -> "jdbc:mysql://localhost:3306/infosys?user=root&password=RomEl213",
+    Map("url" -> "jdbc:mysql://localhost:3306/infosys?user=root&password=",
       "dbtable" -> "infosys.test",
       "driver" -> "com.mysql.jdbc.Driver"
     )).load()
@@ -27,7 +27,7 @@ object sample extends App {
   writer.couchbase(Map("spark.couchbase.nodes" -> "127.0.0.1",
     "spark.couchbase.bucket.default" -> "",
     "com.couchbase.username" -> "Administrator",
-    "com.couchbase.password" -> "RomEl213"
+    "com.couchbase.password" -> ""
   ))
 
 }
