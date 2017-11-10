@@ -17,6 +17,12 @@ dependencies {
     compile group: 'org.apache.spark', name: 'spark-core_2.11', version: '2.2.0'
     compile group: 'org.apache.spark', name: 'spark-sql_2.11', version: '2.2.0'
     compile group: 'com.couchbase.client', name: 'spark-connector_2.11', version: '2.2.0'
-    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.20'
 
+}
+
+configurations {
+    /* We don't want the storm-core dependency in our shadowJar */
+    runtime.exclude module: 'spark-core_2.11'
+    runtime.exclude module: 'spark-sql_2.11'
 }
