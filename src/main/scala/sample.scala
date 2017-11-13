@@ -15,12 +15,12 @@ object sample extends App {
     )).load()
 
   // once we have a dataframe we can use sql-like transformations
-  val upper = df.selectExpr("id", "upper(name) as name", "date")
+  //val upper = df.selectExpr("id", "upper(name) as name", "date")
   // and filters
-  val filtered = upper.filter("name is not null")
+  //val filtered = upper.filter("name is not null")
 
   //before inserting to couchbase we need to map the id field
-  val prep = filtered.withColumn("META_ID", df.col("id").cast("string"))
+  val prep = df.withColumn("META_ID", df.col("id").cast("string"))
 
   // and now we can write to couchbase
   val writer = new DataFrameWriterFunctions(prep.write)
